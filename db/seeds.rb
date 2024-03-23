@@ -14,6 +14,6 @@
                             description: 'テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト')
   product.image.attach(
     io: File.open(Rails.root.join('app/assets/images/450x300.jpg')),
-    filename: '450x300.jpeg'
+    filename: '450x300.jpg'
   )
 end
