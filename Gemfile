@@ -84,11 +84,17 @@ group :test do
   gem 'webdrivers'
 end
 
-# Add
+# pagination
 # gem 'will_paginate'
 # gem 'bootstrap-will_paginate'
 gem 'bootstrap5-kaminari-views', '~> 0.0.1'
 gem 'kaminari'
 
-# 今回は例外的に本番環境でもfakerを使用
+# test-data
 gem 'faker'
+
+# env
+gem 'dotenv-rails'
+
+# aws storage
+gem 'aws-sdk-s3', require: false
