@@ -83,3 +83,18 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+
+# pagination
+# gem 'will_paginate'
+# gem 'bootstrap-will_paginate'
+gem 'bootstrap5-kaminari-views', '~> 0.0.1'
+gem 'kaminari'
+
+# test-data
+gem 'faker'
+
+# env
+gem 'dotenv-rails'
+
+# aws storage
+gem 'aws-sdk-s3', require: false

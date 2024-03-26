@@ -1,0 +1,8 @@
+# config/locales/jp/yml
+jp:
+  number:
+    currency:
+      format:
+        unit: "¥"
+        format: "%u%n"
+        precision: 0
