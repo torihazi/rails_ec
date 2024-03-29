@@ -10,8 +10,8 @@
 
 50.times do
   product = Product.new(name: Faker::Commerce.product_name,
-                            price: (Faker::Commerce.price * 100).floor(-2),
-                            description: 'テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト')
+                        price: (Faker::Commerce.price * 100).floor(-2),
+                        description: 'テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト')
   product.image.attach(
     io: File.open(Rails.root.join('app/assets/images/450x300.jpg')),
     filename: '450x300.jpg'
