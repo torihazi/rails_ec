@@ -1,8 +1,23 @@
 # config/locales/jp/yml
-jp:
+ja:
+  activerecord:
+    models:
+      product:  商品
+    attributes:
+      product:
+        id: ID
+        name: 商品名
+        price: 値段
+        description: 商品説明
+        image: 商品画像
+        created_at: 登録日時
+        updated_at: 更新日時    
   number:
     currency:
       format:
         unit: "¥"
         format: "%u%n"
         precision: 0
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"

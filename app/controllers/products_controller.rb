@@ -2,8 +2,8 @@
 
 class ProductsController < ApplicationController
   def index
-    @products = Product.preload(image_attachment: :blob)
-    @products = @products.page(params[:page])
+    @products = Product.eager_load(image_attachment: :blob)
+    @products = @products.order(id: :asc).page(params[:page])
   end
 
   def show

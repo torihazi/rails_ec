@@ -15,14 +15,14 @@
         <div class="col mb-5">
           <div class="card h-100">
             <!-- Product image-->
-            <%= link_to (image_tag product.image, class: "card-img"), product %>
+            <%= link_to (image_tag product.image.variant(:display), class: "card-img card-img-cover"), product %>
             <!-- Product details-->
             <div class="card-body p-4">
               <div class="text-center">
                 <!-- Product name-->
                 <h5 class="fw-bolder"><%= product.name %></h5>
                 <!-- Product price-->
-                <%= number_to_currency(product.price, locale: "jp") %>
+                <%= number_to_currency(product.price, locale: "ja") %>
               </div>
             </div>
             <!-- Product actions-->

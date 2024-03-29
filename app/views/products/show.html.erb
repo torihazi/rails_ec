@@ -3,12 +3,12 @@
   <div class="container px-4 px-lg-5 my-5">
     <div class="row gx-4 gx-lg-5 align-items-center">
       <div class="col-md-6">
-        <%= image_tag @product.image, class: "card-img-top mb-5 mb-md-0", alt: "..." %>
+        <%= image_tag @product.image.variant(:display), class: "card-img-top mb-5 mb-md-0", alt: "..." %>
       </div>
       <div class="col-md-6">
         <h1 class="display-5 fw-bolder"><%= @product.name %></h1>
         <div class="fs-5 mb-5">
-          <span><%= number_to_currency(@product.price, locale: "jp") %></span>
+          <span><%= number_to_currency(@product.price, locale: "ja") %></span>
         </div>
         <p class="lead"><%= @product.description %></p>
         <div class="d-flex">
@@ -31,14 +31,14 @@
         <div class="col mb-5">
           <div class="card h-100">
             <!-- Product image-->
-            <%= link_to (image_tag product.image, class: "card-img-top"), product %>
+            <%= link_to (image_tag product.image.variant(:display), class: "card-img-top"), product %>
             <!-- Product details-->
             <div class="card-body p-4">
               <div class="text-center">
                 <!-- Product name-->
                 <h5 class="fw-bolder"><%= product.name %></h5>
                 <!-- Product price-->
-                <%= number_to_currency(product.price, locale: "jp") %>
+                <%= number_to_currency(product.price, locale: "ja") %>
               </div>
             </div>
             <!-- Product actions-->

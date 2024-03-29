@@ -98,3 +98,9 @@ gem 'dotenv-rails'
 
 # aws storage
 gem 'aws-sdk-s3', require: false
+
+# translate en into ja
+gem 'rails-i18n'
+
+gem 'active_storage_validations'
+gem 'image_processing'
