@@ -138,6 +138,8 @@ GEM
     faker (3.2.3)
       i18n (>= 1.8.11, < 2)
     ffi (1.16.3)
+    font-awesome-sass (6.5.1)
+      sassc (~> 2.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
     htmlbeautifier (1.4.2)
@@ -306,6 +308,8 @@ GEM
     ruby-vips (2.2.1)
       ffi (~> 1.12)
     rubyzip (2.3.2)
+    sassc (2.4.0)
+      ffi (~> 1.9)
     selenium-webdriver (4.10.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -362,11 +366,13 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails
   faker
+  font-awesome-sass
   htmlbeautifier
   image_processing
   jbuilder
   jsbundling-rails
   kaminari
+  mini_magick
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.0)

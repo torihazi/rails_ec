@@ -10,16 +10,12 @@
   </head>
   <body>
     <div class="container">
-
       <%= render 'layouts/admin_header' %>
-
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
-
       <h2><%= yield(:title) %></h2>
       <%= yield %>
-
     </div>
   </body>
 </html>
