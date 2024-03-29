@@ -58,6 +58,8 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'rspec-rails'
+  gem 'faker'
+
 end
 
 group :development do
@@ -89,10 +91,6 @@ end
 # gem 'bootstrap-will_paginate'
 gem 'bootstrap5-kaminari-views', '~> 0.0.1'
 gem 'kaminari'
-
-# test-data
-gem 'faker'
-
 # env
 gem 'dotenv-rails'
 

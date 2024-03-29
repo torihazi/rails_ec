@@ -38,6 +38,11 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
+  def destroy
+    Product.find(params[:id]).destroy
+    flash[:success] = "削除が成功しました"
+    redirect_to admin_products_url, status: :see_other
+  end
 
   private
     def basic_auth
