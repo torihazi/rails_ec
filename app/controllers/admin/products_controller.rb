@@ -3,11 +3,11 @@
 module Admin
   class ProductsController < ApplicationController
     before_action :basic_auth
+    before_action :find_product_by_id, only: [:edit, :update, :destroy]
     layout 'layouts/admins'
 
     def index
-      @products = Product.eager_load(image_attachment: :blob)
-      @products = @products.order(id: :asc).page(params[:page])
+      @products = Product.eager_load(image_attachment: :blob).order(id: :asc).page(params[:page])
     end
 
     def new
@@ -26,11 +26,9 @@ module Admin
     end
 
     def edit
-      @product = Product.find(params[:id])
     end
 
     def update
-      @product = Product.find(params[:id])
       if @product.update(product_params)
         flash[:success] = '更新が完了しました'
         redirect_to admin_products_url
@@ -40,7 +38,7 @@ module Admin
     end
 
     def destroy
-      Product.find(params[:id]).destroy
+      @product.destroy
       flash[:success] = '削除が成功しました'
       redirect_to admin_products_url, status: :see_other
     end
@@ -55,6 +53,10 @@ module Admin
 
     def product_params
       params.require(:product).permit(:name, :price, :description, :image)
+    end
+
+    def find_product_by_id
+      @product = Product.find(params[:id])
     end
   end
 end
