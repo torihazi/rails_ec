@@ -3,7 +3,7 @@
 module Admin
   class ProductsController < ApplicationController
     before_action :basic_auth
-    before_action :find_product_by_id, only: [:edit, :update, :destroy]
+    before_action :find_product_by_id, only: %i[edit update destroy]
     layout 'layouts/admins'
 
     def index
@@ -25,8 +25,7 @@ module Admin
       end
     end
 
-    def edit
-    end
+    def edit; end
 
     def update
       if @product.update(product_params)
