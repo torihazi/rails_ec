@@ -1,0 +1,35 @@
+<% provide(:title, "商品一覧")%>
+<table class="table table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>タイトル</th>
+      <th>作成日時</th>
+      <th>更新日時</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <th><%= product.id %></th>
+        <td><%= product.name %></td>
+        <td><%= l product.created_at %></td>
+        <td><%= l product.updated_at %></td>
+        <td>
+          <%= link_to edit_admin_product_path(product), class:'btn btn-outline-secondary' do %>
+            <i class="bi bi-pencil"></i>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to admin_product_path(product), data: { "turbo-method": :delete, turbo_confirm: "削除してもいいですか？"}, class:'btn btn-outline-danger' do%>
+            <i class="bi bi-trash3"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<!-- ページネーション -->
+<%= paginate @products, theme: 'bootstrap-5'%>

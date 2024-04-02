@@ -8,12 +8,15 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-50.times do
-  product = Product.create!(name: Faker::Commerce.product_name,
-                            price: (Faker::Commerce.price * 100).floor(-2),
-                            description: 'テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト')
-  product.image.attach(
-    io: File.open(Rails.root.join('app/assets/images/450x300.jpg')),
-    filename: '450x300.jpg'
-  )
+unless Rails.env.production?
+  50.times do
+    product = Product.new(name: Faker::Commerce.product_name,
+                          price: (Faker::Commerce.price * 100).floor(-2),
+                          description: 'テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト')
+    product.image.attach(
+      io: File.open(Rails.root.join('app/assets/images/450x300.jpg')),
+      filename: '450x300.jpg'
+    )
+    product.save
+  end
 end
