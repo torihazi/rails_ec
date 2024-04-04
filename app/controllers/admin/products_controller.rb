@@ -3,7 +3,8 @@
 module Admin
   class ProductsController < ApplicationController
     before_action :basic_auth
-    before_action :find_product_by_id, only: %i[edit update destroy]
+    before_action :set_product, only: %i[edit update destroy]
+    skip_before_action :create_cart, :set_cart
     layout 'layouts/admins'
 
     def index
@@ -54,7 +55,7 @@ module Admin
       params.require(:product).permit(:name, :price, :description, :image)
     end
 
-    def find_product_by_id
+    def set_product
       @product = Product.find(params[:id])
     end
   end
