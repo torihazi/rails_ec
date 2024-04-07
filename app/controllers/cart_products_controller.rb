@@ -11,8 +11,7 @@ class CartProductsController < ApplicationController
       cart_product.quantity += params[:quantity].to_i
     else
       cart_product = @cart.cart_products.build(product_id: params[:product_id],
-                                              quantity: params[:quantity]
-                                              )
+                                               quantity: params[:quantity])
     end
 
     flash[:danger] = '商品が登録できませんでした' unless cart_product.save
