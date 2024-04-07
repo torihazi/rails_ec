@@ -1,18 +1,10 @@
 # frozen_string_literal: true
 
 class Cart < ApplicationRecord
-  has_many :cart_items, dependent: :destroy
-  has_many :products, through: :cart_items
-
-  def sum_price
-    total_price = 0
-    cart_items.each do |item|
-      total_price += item.amount
-    end
-    total_price
-  end
+  has_many :cart_products, dependent: :destroy
+  has_many :products, through: :cart_products
 
   def sum_quantity
-    cart_items.sum(:quantity)
+    cart_products.sum(:quantity)
   end
 end
