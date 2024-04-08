@@ -45,7 +45,7 @@ nav > ul {
 input, textarea {
   border: 1px solid #bbb;
   width: 100%;
-  margin-bottom: 15px;
+  // margin-bottom: 15px;
   @include box_sizing;
 }
 
@@ -60,6 +60,7 @@ input {
     margin: 0 0 30px 0;
   }
 }
+
 
 
 

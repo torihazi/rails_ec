@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Product < ApplicationRecord
+  has_many :cart_products, dependent: :destroy
+  has_many :carts, through: :cart_products
   has_one_attached :image do |attachable|
     attachable.variant :display, resize_to_limit: [450, 300]
   end

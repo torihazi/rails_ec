@@ -10,6 +10,9 @@
   </head>
   <body>
     <%= render 'layouts/header_nav' %>
+    <% flash.each do |message_type, message| %>
+      <div class="container alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
     <%= yield %>
     <%= render 'layouts/footer' %>
   </body>
