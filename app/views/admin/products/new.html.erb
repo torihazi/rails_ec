@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-md">
     <%= form_with model: @product, url: admin_products_path(@product) do |f| %>
-      <%= render 'shared/error_messages' %>
+      <%= render 'shared/error_products' %>
       <div class="form-group">
         <%= f.label :name, class: "form-label"%>
         <%= f.text_field :name, class: "form-control" %>

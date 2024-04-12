@@ -4,7 +4,7 @@ module Admin
   class ProductsController < ApplicationController
     before_action :basic_auth
     before_action :set_product, only: %i[edit update destroy]
-    skip_before_action :create_cart, :set_cart
+    skip_before_action :create_cart, :set_cart, :set_cart_products
     layout 'layouts/admins'
 
     def index

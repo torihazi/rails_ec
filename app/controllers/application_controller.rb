@@ -3,6 +3,7 @@
 class ApplicationController < ActionController::Base
   before_action :create_cart
   before_action :set_cart
+  before_action :set_cart_products
 
   private
 
@@ -15,5 +16,9 @@ class ApplicationController < ActionController::Base
 
   def set_cart
     @cart = Cart.find(session[:cart_id])
+  end
+
+  def set_cart_products
+    @cart_products = @cart.cart_products.preload(:product)
   end
 end
