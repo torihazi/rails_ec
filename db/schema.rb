@@ -72,8 +72,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_08_121057) do
     t.string "last_name", null: false
     t.string "user_name", null: false
     t.string "email", null: false
-    t.string "address_line_1", null: false
-    t.string "address_line_2", null: false
+    t.string "address_line1", null: false
+    t.string "address_line2", null: false
     t.string "cardholder_name", null: false
     t.string "card_number", null: false
     t.string "expiration_date", null: false

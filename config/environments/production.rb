@@ -44,17 +44,16 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = false
 
-
   config.action_mailer.default_url_options = { host: 'https://desolate-dusk-36881-9f810b502551.herokuapp.com/' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
+    address: 'smtp.gmail.com',
     enable_starttls_auto: true,
-    port:                 587,
-    domain:               'gmail.com',
-    user_name:            ENV["GMAIL_MAIL"],
-    password:             ENV["GMAIL_PASS"],
-    authentication:       :plain
+    port: 587,
+    domain: 'gmail.com',
+    user_name: ENV['GMAIL_MAIL'],
+    password: ENV['GMAIL_PASS'],
+    authentication: :plain
   }
 
   # Store uploaded files on the local file system (see config/storage.yml for options).

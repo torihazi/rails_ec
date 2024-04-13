@@ -18,8 +18,8 @@ ja:
         last_name: 姓
         user_name: ユーザー名
         email: メールアドレス
-        address_line_1: 住所1
-        address_line_2: 住所2
+        address_line1: 住所1
+        address_line2: 住所2
         cardholder_name: カード名義人
         card_number: カード番号
         expiration_date: 有効期限

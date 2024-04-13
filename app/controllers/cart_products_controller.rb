@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class CartProductsController < ApplicationController
-
   def create
     cart_product = @cart.cart_products.find_by(product_id: params[:product_id])
 

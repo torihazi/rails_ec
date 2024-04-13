@@ -1,7 +1,7 @@
 <% provide(:title, '新規作成') %>
 <div class="row">
   <div class="col-md">
-    <%= form_with model: @product, url: admin_products_path(@product) do |f| %>
+    <%= form_with model: [:admin, @product] do |f| %>
       <%= render 'shared/error_products' %>
       <div class="form-group">
         <%= f.label :name, class: "form-label"%>

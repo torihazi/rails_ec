@@ -55,7 +55,7 @@
               <%= f.text_field  :last_name, class: "form-control", placeholder: "太郎", required: true %>
               <% if @order.errors.include?(:last_name) %>
                 <small style="color: red;"><%= @order.errors.full_messages_for(:last_name).first %></small>
-              <% end %> 
+              <% end %>
             </div>
             <div class="col-12">
               <%= f.label :user_name, class: "form-label" %>
@@ -79,17 +79,17 @@
               <% end %>
             </div>
             <div class="col-12">
-              <%= f.label :address_line_1, class: "form-label" %>
-              <%= f.text_field  :address_line_1, class: "form-control", placeholder: "東京都新宿区", required: true %>
-              <% if @order.errors.include?(:address_line_1) %>
-                <small style="color: red;"><%= @order.errors.full_messages_for(:address_line_1).first %></small>
+              <%= f.label :address_line1, class: "form-label" %>
+              <%= f.text_field  :address_line1, class: "form-control", placeholder: "東京都新宿区", required: true %>
+              <% if @order.errors.include?(:address_line1) %>
+                <small style="color: red;"><%= @order.errors.full_messages_for(:address_line1).first %></small>
               <% end %>
             </div>
             <div class="col-12">
-              <%= f.label :address_line_2, class: "form-label" %> <span class="text-body-secondary">(Optional)</span>
-              <%= f.text_field  :address_line_2, class: "form-control", placeholder: "1丁目1番地さくらテラス202", required: true %>
-              <% if @order.errors.include?(:address_line_2) %>
-                <small style="color: red;"><%= @order.errors.full_messages_for(:address_line_2).first %></small>
+              <%= f.label :address_line2, class: "form-label" %> <span class="text-body-secondary">(Optional)</span>
+              <%= f.text_field  :address_line2, class: "form-control", placeholder: "1丁目1番地さくらテラス202", required: true %>
+              <% if @order.errors.include?(:address_line2) %>
+                <small style="color: red;"><%= @order.errors.full_messages_for(:address_line2).first %></small>
               <% end %>
             </div>
           </div>
@@ -117,7 +117,6 @@
                   <% end %>
                 </small>
               <% end %>
-
             </div>
             <div class="col-md-6">
               <%= f.label :expiration_date, class: "form-label" %>
@@ -129,7 +128,6 @@
                   <% end %>
                 </small>
               <% end %>
-
             </div>
             <div class="col-md-6">
               <%= f.label :security_code, class: "form-label" %>
@@ -141,7 +139,6 @@
                   <% end %>
                 </small>
               <% end %>
- 
             </div>
           </div>
           <hr class="my-4">

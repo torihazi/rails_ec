@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class CartsController < ApplicationController
-
   def index
     @cart_products = @cart.cart_products.preload(:product)
     @total_price = 0

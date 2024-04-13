@@ -1,12 +1,12 @@
+# frozen_string_literal: true
+
 class OrdersController < ApplicationController
-  before_action :basic_auth
+  before_action :basic_auth, only: %i[index show]
   layout 'layouts/admins', only: %i[index show]
 
-
   def create
-
     @order = Order.new(order_params)
-  
+
     ApplicationRecord.transaction do
       @order.save!
       @cart.cart_products.each do |product|
@@ -14,13 +14,13 @@ class OrdersController < ApplicationController
       end
       session.delete(:cart_id)
       @cart.destroy!
-      flash[:success] = "お買い上げありがとうございます"
+      flash[:success] = 'お買い上げありがとうございます'
       OrderDetailMailer.with(email: @order.email, order_details: @order.order_details).checkout_mail.deliver_now
       redirect_to root_path
     end
-    rescue ActiveRecord::RecordInvalid
-      flash[:danger] = "購入に失敗しました"
-      render 'carts/index',  status: :unprocessable_entity
+  rescue ActiveRecord::RecordInvalid
+    flash[:danger] = '購入に失敗しました'
+    render 'carts/index', status: :unprocessable_entity
   end
 
   def index
@@ -37,14 +37,15 @@ class OrdersController < ApplicationController
   end
 
   private
+
   def order_params
     params.require(:order).permit(
-      :first_name, 
+      :first_name,
       :last_name,
       :user_name,
       :email,
-      :address_line_1,
-      :address_line_2,
+      :address_line1,
+      :address_line2,
       :cardholder_name,
       :card_number,
       :expiration_date,
@@ -53,7 +54,7 @@ class OrdersController < ApplicationController
   end
 
   def create_order_detail(order, item)
-    order_detail = OrderDetail.create!(
+    OrderDetail.create!(
       order_id: order.id,
       product_name: item.product.name,
       product_price: item.product.price,
@@ -66,5 +67,4 @@ class OrdersController < ApplicationController
       username == ENV['BASIC_AUTH_USER'] && password == ENV['BASIC_AUTH_PASSWORD']
     end
   end
-
 end

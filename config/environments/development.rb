@@ -31,13 +31,12 @@ Rails.application.configure do
     }
   else
     config.action_controller.perform_caching = false
-    
+
     config.cache_store = :null_store
-    
-    
+
   end
-  
-  config.action_mailer.default_url_options = {  host: 'localhost:3000' }
+
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.action_mailer.delivery_method = :letter_opener_web
   config.action_mailer.perform_deliveries = true
 
