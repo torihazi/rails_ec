@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>注文者情報</h2>
+      <table class="table table-borderless">
+        <tr>
+          <th>注文ID</th>
+          <td><%= @order.id %></td>
+          <tr>
+            <th>名前</th>
+            <td><%= "#{@order.first_name} #{@order.last_name}" %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @order.email %></td>
+          </tr>
+          <tr>
+            <th>住所1</th>
+            <td><%= @order.address_line1 %></td>
+          </tr>
+          <tr>
+            <th>住所2</th>
+            <td><%= @order.address_line2 %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h2>注文商品</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>商品名</th>
+              <th>数量</th>
+              <th>価格</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @order_details.each do |i| %>
+              <tr>
+                <td><%= i.product_name %></td>
+                <td><%= i.quantity %></td>
+                <td><%= number_to_currency(i.product_price, locale: "ja") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+          <tfoot class="table-group-divider table-bottom-none">
+            <tr>
+              <th>合計</th>
+              <td><%= @order_details.sum(:quantity) %></td>
+              <td><%= number_to_currency(@total_price, locale: "ja") %></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,24 @@
+<h1>購入明細</h1>
+<p>
+  お買い上げありがとうございます<br>
+</p>
+<table>
+  <thead>
+    <tr>
+      <th>注文番号</th>
+      <th>商品名</th>
+      <th>値段</th>
+      <th>数量</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order_details.each do |order| %>
+      <tr>
+        <th><%= order.order_id %></th>
+        <td><%= order.product_name %></td>
+        <td><%= number_to_currency(order.product_price, locale: "ja") %></td>
+        <td><%= order.quantity %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

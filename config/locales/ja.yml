@@ -3,6 +3,7 @@ ja:
   activerecord:
     models:
       product:  商品
+      order: 注文
     attributes:
       product:
         id: ID
@@ -11,7 +12,18 @@ ja:
         description: 商品説明
         image: 商品画像
         created_at: 登録日時
-        updated_at: 更新日時    
+        updated_at: 更新日時 
+      order:
+        first_name: 名
+        last_name: 姓
+        user_name: ユーザー名
+        email: メールアドレス
+        address_line1: 住所1
+        address_line2: 住所2
+        cardholder_name: カード名義人
+        card_number: カード番号
+        expiration_date: 有効期限
+        security_code: セキュリティコード
   number:
     currency:
       format:
