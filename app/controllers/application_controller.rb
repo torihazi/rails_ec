@@ -21,4 +21,12 @@ class ApplicationController < ActionController::Base
   def set_cart_products
     @cart_products = @cart.cart_products.preload(:product)
   end
+
+  def set_promotion_code
+    @promotion_code = if session[:promotion_code]
+                        PromotionCode.find_by(code: session[:promotion_code])
+                      else
+                        PromotionCode.new
+                      end
+  end
 end
