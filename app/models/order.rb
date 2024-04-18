@@ -19,4 +19,12 @@ class Order < ApplicationRecord
                               format: { with: %r{\A\d{2}/\d{2}\z} }
   validates :security_code, presence: true,
                             format: { with: /\A\d{3}\z/ }
+
+  def total_price
+    price = 0
+    order_details.each do |i|
+      price += i.quantity * i.product_price
+    end
+    price -= promotion_code.discount if promotion_code.present?
+  end
 end

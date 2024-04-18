@@ -23,10 +23,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_promotion_code
-    @promotion_code = if session[:promotion_code]
-                        PromotionCode.find_by(code: session[:promotion_code])
-                      else
-                        PromotionCode.new
-                      end
+    @promotion_code = PromotionCode.find_or_initialize_by(code: session[:promotion_code])
   end
 end

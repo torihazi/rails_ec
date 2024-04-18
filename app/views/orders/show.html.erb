@@ -44,7 +44,7 @@
                 <td><%= number_to_currency(i.product_price, locale: "ja") %></td>
               </tr>
             <% end %>
-            <% unless @order.promotion_code.nil? %>
+            <% if @order.promotion_code.present? %>
               <tr>
                 <th>割引コード</th>
                 <td></td>

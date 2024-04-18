@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
       @cart.cart_products.each do |product|
         create_order_detail(@order, product)
       end
-      total_price
+      @total_price = @order.total_price
       mail_to_customer
       reset_session
       @cart.destroy!
@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details
-    total_price
+    @total_price = @order.total_price
   end
 
   private
@@ -68,20 +68,12 @@ class OrdersController < ApplicationController
     end
   end
 
-  def total_price
-    @total_price = 0
-    @order.order_details.each do |i|
-      @total_price += i.quantity * i.product_price
-    end
-    @total_price -= @order.promotion_code.discount unless @order.promotion_code.nil?
-  end
-
   def mail_to_customer
     OrderDetailMailer.with(
       email: @order.email,
       order_details: @order.order_details,
       order: @order,
-      total_price: @total_price
+      total_price: @order.total_price
     ).checkout_mail.deliver_now
   end
 end
