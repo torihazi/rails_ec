@@ -2,20 +2,23 @@
 
 class OrdersController < ApplicationController
   before_action :basic_auth, only: %i[index show]
+  before_action :set_promotion_code, only: %i[create]
   layout 'layouts/admins', only: %i[index show]
 
   def create
     @order = Order.new(order_params)
+    @order.promotion_code_id = @promotion_code.id if session[:promotion_code]
 
     ApplicationRecord.transaction do
       @order.save!
       @cart.cart_products.each do |product|
         create_order_detail(@order, product)
       end
-      session.delete(:cart_id)
+      @total_price = @order.total_price
+      mail_to_customer
+      reset_session
       @cart.destroy!
       flash[:success] = 'お買い上げありがとうございます'
-      OrderDetailMailer.with(email: @order.email, order_details: @order.order_details).checkout_mail.deliver_now
       redirect_to root_path
     end
   rescue ActiveRecord::RecordInvalid
@@ -30,10 +33,7 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details
-    @total_price = 0
-    @order.order_details.each do |i|
-      @total_price += i.quantity * i.product_price
-    end
+    @total_price = @order.total_price
   end
 
   private
@@ -66,5 +66,14 @@ class OrdersController < ApplicationController
     authenticate_or_request_with_http_basic do |username, password|
       username == ENV['BASIC_AUTH_USER'] && password == ENV['BASIC_AUTH_PASSWORD']
     end
+  end
+
+  def mail_to_customer
+    OrderDetailMailer.with(
+      email: @order.email,
+      order_details: @order.order_details,
+      order: @order,
+      total_price: @order.total_price
+    ).checkout_mail.deliver_now
   end
 end

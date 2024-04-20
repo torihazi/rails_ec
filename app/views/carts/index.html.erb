@@ -24,16 +24,31 @@
                 </div>
               </li>
             <% end %>
+            <% if session[:promotion_code] %>
+              <li class="list-group-item d-flex justify-content-between">
+                <div>
+                  <h6 class="my-0">
+                    割引コード
+                  </h6>
+                </div>
+                <div>
+                  <span class="text-body-secondary ">-<%= number_to_currency(@promotion_code.discount, locale: "ja") %></span>
+                  <%= link_to promotion_code_path(@promotion_code), data: { "turbo-method": :delete }, class:'btn btn-outline-danger' do%>
+                    <i class="bi bi-trash3"></i>
+                  <% end %>
+                </div>
+              </li>
+            <% end %>
             <li class="list-group-item d-flex justify-content-between">
               <span>合計金額 (¥)</span>
               <strong><%= number_to_currency(@total_price, local: "ja") %></strong>
             </li>
-            <form class="card mt-1 p-2">
+            <%= form_with url: promotion_codes_path, class: "card mt-1 p-2" do |f|%>
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="割引コード">
-                <button type="submit" class="btn btn-secondary">登録</button>
+                <%= f.text_field :code, class: "form-control", placeholder: "割引コード" %>
+                <%= f.button "登録", type: "submit", class: "btn btn-secondary" %>
               </div>
-            </form>
+            <% end %>
           <% else %>
             商品はありません
           <% end %>

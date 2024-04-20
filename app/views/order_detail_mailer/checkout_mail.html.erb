@@ -20,5 +20,19 @@
         <td><%= order.quantity %></td>
       </tr>
     <% end %>
+    <% unless @order.promotion_code.nil? %>
+      <tr>
+        <th>割引コード</th>
+        <td></td>
+        <td>-<%= number_to_currency(@order.promotion_code.discount, locale: "ja") %></td>
+      </tr>
+    <% end %>
   </tbody>
+  <tfoot class="table-group-divider table-bottom-none">
+    <tr>
+      <th>合計</th>
+      <td><%= @order_details.sum(:quantity) %></td>
+      <td><%= number_to_currency(@total_price, locale: "ja") %></td>
+    </tr>
+  </tfoot>
 </table>
